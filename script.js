@@ -27,29 +27,34 @@ function generatePassword() {
 
     // Prompt for Lowercase
     var passLow = confirm(`Would you like to insert lower case letters?`);
+    var masterChar = [];
     if (passLow) {
+      masterChar = masterChar.concat(lowAlpha);
       }
   
     // Prompt for Uppercase
     var passUp = confirm(`Would you like to insert upper case letters?`);
 
     if (passUp) {
+      masterChar = masterChar.concat(upAlpha)
       }
 
     // Prompt for Numbers
     var passNumb = confirm(`Would you like to insert numbers?`);
 
     if (passNumb) {
+      masterChar = masterChar.concat(numberSet);
       }
 
     // Prompt for Special Characters
     var passSpecial = confirm(`Would you like to insert special characters?`);
 
     if (passSpecial) {
+      masterChar = masterChar.concat(specialChar);
       }
 
     if ((passLow == false) && (passUp == false) && (passNumb == false) && (passSpecial == false)) {
-        return alert(`You must pick at least one type of character`);
+        return alert(`You must insert at least one type of character`);
 
       }
 
