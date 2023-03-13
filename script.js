@@ -1,14 +1,74 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
+// Arrays for characters
+var lowAlpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p","q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var upAlpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P","Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var numberSet =["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var specialChar = [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", ">", "=", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~"];
+
+// Question Prompts for password generation
+function generatePassword() {
+
   var passwordText = document.querySelector("#password");
+  var passwordLength = prompt(`Enter a password length between 8 and 128 Characters`);
+  if (isNaN(passwordLength)) 
+  { alert('Please enter valid number(between 8 and 128)');
+    generatePassword();
+  
+  }
+    if ((passwordLength < 8) || (passwordLength > 128)) {
 
-  passwordText.value = password;
+      alert(`Please enter valid number(between 8 and 128)`);
+      generatePassword();
+      } else {
+        alert(`The password will be ${passwordLength} characters.`);
+      }
 
+    // Prompt for Lowercase
+    var passLow = confirm(`Would you like to insert lower case letters?`);
+    if (passLow) {
+      }
+  
+    // Prompt for Uppercase
+    var passUp = confirm(`Would you like to insert upper case letters?`);
+
+    if (passUp) {
+      }
+
+    // Prompt for Numbers
+    var passNumb = confirm(`Would you like to insert numbers?`);
+
+    if (passNumb) {
+      }
+
+    // Prompt for Special Characters
+    var passSpecial = confirm(`Would you like to insert special characters?`);
+
+    if (passSpecial) {
+      }
+
+    if ((passLow == false) && (passUp == false) && (passNumb == false) && (passSpecial == false)) {
+        return alert(`You must pick at least one type of character`);
+
+      }
+
+      // Generate password using chosen characters
+      var Password = "";
+      for (var i = 0; i < passwordLength; i++) {
+        var gen = Math.floor(Math.random() * masterChar.length);
+        Password = Password.concat(masterChar[gen]);
+      }
+      return Password;
 }
-
+    
+// Function to put the generated password into the box
+  function writePassword() {
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+    passwordText.value = password;
+  }
+    
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+    generateBtn.addEventListener("click", writePassword);
+    
